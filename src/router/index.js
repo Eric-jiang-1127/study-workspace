@@ -1,6 +1,6 @@
 import {
   createRouter as createVueRouter,
-  createWebHistory,
+  createWebHashHistory,
 } from 'vue-router'
 
 import HomeView from '../views/HomeView.vue'
@@ -11,14 +11,36 @@ import PlannerView from '../views/PlannerView.vue'
 
 export function createRouter() {
   return createVueRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
+
     routes: [
-      { path: '/', component: HomeView },
-      { path: '/blog', component: BlogView },
-      { path: '/blog/category/:category', component: CategoryView },
-      { path: '/blog/:slug', component: ArticleView },
-      { path: '/planner', component: PlannerView },
+      {
+        path: '/',
+        name: 'home',
+        component: HomeView,
+      },
+      {
+        path: '/blog',
+        name: 'blog',
+        component: BlogView,
+      },
+      {
+        path: '/blog/category/:category',
+        name: 'category',
+        component: CategoryView,
+      },
+      {
+        path: '/blog/:slug',
+        name: 'article',
+        component: ArticleView,
+      },
+      {
+        path: '/planner',
+        name: 'planner',
+        component: PlannerView,
+      },
     ],
+
     scrollBehavior() {
       return { top: 0 }
     },
